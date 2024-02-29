@@ -152,12 +152,12 @@ cat<span class="w"> </span>~/.env.demo
 <span class="o">[</span>dotenv<span class="w"> </span>~/.env.demo<span class="o">]</span><span class="w"> </span><span class="nv">KUBE_CONTEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>de*****
 </code></pre></div>
 
-<blockquote>
-<p>[!IMPORTANT]
-Did you notice that Teller only imported the secrets we defined in <code>.teller.yml</code>?</p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>Did you notice that Teller only imported the secrets we defined in <code>.teller.yml</code>?</p>
 <p>This is a great security feature, letting you explicitly define which secrets are
 allowed to be used in your project.</p>
-</blockquote>
+</div>
 <h3 id="redact-secrets-from-logs">Redact secrets from logs<a class="headerlink" href="#redact-secrets-from-logs" title="Permanent link">&para;</a></h3>
 <p>We will simulate an application log tail and Teller will redact the secrets.</p>
 <div class="codehilite"><pre><span></span><code>$<span class="w"> </span><span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Simulated log... 123456&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>tail<span class="w"> </span>.env.example<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>teller<span class="w"> </span>redact
@@ -171,10 +171,10 @@ Simulated<span class="w"> </span>log...<span class="w"> </span>**REDACTED!**
 </code></pre></div>
 
 <p>Teller redacted the secrets that we defined in <code>.teller.yml</code>!</p>
-<blockquote>
-<p>[!TIP]
-Even though we defined <code>EMAIL=name@example.com</code> in our <code>.env.demo</code> file, Teller did not redact it because we did not define it in <code>.teller.yml</code>. Use the <code>env_sync</code> feature to automatically import all secrets from your <code>.env</code> file.</p>
-</blockquote>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Even though we defined <code>EMAIL=name@example.com</code> in our <code>.env.demo</code> file, Teller did not redact it because we did not define it in <code>.teller.yml</code>. Use the <code>env_sync</code> feature to automatically import all secrets from your <code>.env</code> file.</p>
+</div>
 <h3 id="load-secrets-into-your-shell-commands">Load secrets into your shell commands<a class="headerlink" href="#load-secrets-into-your-shell-commands" title="Permanent link">&para;</a></h3>
 <p>Simple load, no redaction:</p>
 <div class="codehilite"><pre><span></span><code>$<span class="w"> </span>teller<span class="w"> </span>run<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;PASSWORD: </span><span class="si">${</span><span class="nv">API_PASSWORD</span><span class="si">}</span><span class="s2">&quot;</span>
