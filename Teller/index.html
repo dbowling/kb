@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://dbowling.github.io/kb/Teller/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Teller - K8s Documentation</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Teller";
+        var mkdocs_page_input_path = "Teller.md";
+        var mkdocs_page_url = "/kb/Teller/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> K8s Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../MkDocs/">MkDocs Site Generator</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Teller</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#env-example">.env example</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configure-teller-with-telleryml">Configure teller with .teller.yml</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#show-the-managed-secrets">Show the managed secrets</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#redact-secrets-from-logs">Redact secrets from logs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#load-secrets-into-your-shell-commands">Load secrets into your shell commands</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#use-secrets-in-your-zsh-shell-functions">Use secrets in your ZSH shell functions</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">K8s Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Teller</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/umd-lib/dbowling/kb/edit/main/docs/Teller.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="teller">Teller<a class="headerlink" href="#teller" title="Permanent link">&para;</a></h1>
+<p><a href="https://tlr.dev/">Teller</a> is a command line tool to manage developer secrets.</p>
+<p>It works with many sources of secrets, including <code>.env</code> files, LastPass, 1Password, and Vault.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>brew<span class="w"> </span>tap<span class="w"> </span>spectralops/tap<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>teller
+</code></pre></div>
+
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<p>To get started, we will configure a demo <code>.env</code> file to hold our plain text secrets and a <code>.teller.yml</code> file to configure teller for this project.</p>
+<h3 id="env-example">.env example<a class="headerlink" href="#env-example" title="Permanent link">&para;</a></h3>
+<p>Create a <code>.env</code> file in your home directory where it is safe from version control and prying eyes.</p>
+<div class="codehilite"><pre><span></span><code>cat<span class="w"> </span>.env.example<span class="w"> </span>&gt;<span class="w"> </span>~/.env.demo<span class="w"> </span>
+chmod<span class="w"> </span><span class="m">0600</span><span class="w"> </span>~/.env.demo
+cat<span class="w"> </span>~/.env.demo
+
+<span class="c1"># Output</span>
+<span class="nv">DEMO</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">KUBE_CONTEXT</span><span class="o">=</span>demo
+<span class="nv">PASSWORD</span><span class="o">=</span><span class="m">123456</span>
+<span class="nv">EMAIL</span><span class="o">=</span>name@example.com
+</code></pre></div>
+
+<h3 id="configure-teller-with-telleryml">Configure teller with <code>.teller.yml</code><a class="headerlink" href="#configure-teller-with-telleryml" title="Permanent link">&para;</a></h3>
+<p>Write <code>.teller.yml</code> in the root of your project.</p>
+<div class="codehilite"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2nd Brain</span>
+
+<span class="nt">carry_env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="nt">providers</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">dotenv</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">API_PASSWORD</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.env.demo</span>
+<span class="w">        </span><span class="nt">field</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PASSWORD</span>
+<span class="w">        </span><span class="nt">serverity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">high</span>
+<span class="w">        </span><span class="nt">redact_with</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;**REDACTED!**&quot;</span>
+<span class="w">      </span><span class="nt">KUBE_CONTEXT</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">~/.env.demo</span>
+<span class="w">        </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+</code></pre></div>
+
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
+<h3 id="show-the-managed-secrets">Show the managed secrets<a class="headerlink" href="#show-the-managed-secrets" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>teller<span class="w"> </span>show
+
+<span class="c1"># Output</span>
+-*-<span class="w"> </span>teller:<span class="w"> </span>loaded<span class="w"> </span>variables<span class="w"> </span><span class="k">for</span><span class="w"> </span>2nd<span class="w"> </span>Brain<span class="w"> </span>using<span class="w"> </span>.teller.yml<span class="w"> </span>-*-
+
+<span class="o">[</span>dotenv<span class="w"> </span>~/.env.demo<span class="o">]</span><span class="w"> </span><span class="nv">API_PASSWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span>*****
+<span class="o">[</span>dotenv<span class="w"> </span>~/.env.demo<span class="o">]</span><span class="w"> </span><span class="nv">KUBE_CONTEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>de*****
+</code></pre></div>
+
+<blockquote>
+<p>[!IMPORTANT]
+Did you notice that Teller only imported the secrets we defined in <code>.teller.yml</code>?</p>
+<p>This is a great security feature, letting you explicitly define which secrets are
+allowed to be used in your project.</p>
+</blockquote>
+<h3 id="redact-secrets-from-logs">Redact secrets from logs<a class="headerlink" href="#redact-secrets-from-logs" title="Permanent link">&para;</a></h3>
+<p>We will simulate an application log tail and Teller will redact the secrets.</p>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span><span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Simulated log... 123456&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>tail<span class="w"> </span>.env.example<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>teller<span class="w"> </span>redact
+
+<span class="c1"># Output</span>
+Simulated<span class="w"> </span>log...<span class="w"> </span>**REDACTED!**
+<span class="nv">DEMO</span><span class="o">=</span><span class="nb">true</span>
+<span class="nv">KUBE_CONTEXT</span><span class="o">=</span>**REDACTED**
+<span class="nv">PASSWORD</span><span class="o">=</span>**REDACTED!**
+<span class="nv">EMAIL</span><span class="o">=</span>name@example.com
+</code></pre></div>
+
+<p>Teller redacted the secrets that we defined in <code>.teller.yml</code>!</p>
+<blockquote>
+<p>[!TIP]
+Even though we defined <code>EMAIL=name@example.com</code> in our <code>.env.demo</code> file, Teller did not redact it because we did not define it in <code>.teller.yml</code>. Use the <code>env_sync</code> feature to automatically import all secrets from your <code>.env</code> file.</p>
+</blockquote>
+<h3 id="load-secrets-into-your-shell-commands">Load secrets into your shell commands<a class="headerlink" href="#load-secrets-into-your-shell-commands" title="Permanent link">&para;</a></h3>
+<p>Simple load, no redaction:</p>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>teller<span class="w"> </span>run<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;PASSWORD: </span><span class="si">${</span><span class="nv">API_PASSWORD</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># Output</span>
+-*-<span class="w"> </span>teller:<span class="w"> </span>loaded<span class="w"> </span>variables<span class="w"> </span><span class="k">for</span><span class="w"> </span>2nd<span class="w"> </span>Brain<span class="w"> </span>using<span class="w"> </span>.teller.yml<span class="w"> </span>-*-
+PASSWORD:<span class="w"> </span><span class="m">123456</span>
+</code></pre></div>
+
+<p>Redact secrets:</p>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>teller<span class="w"> </span>run<span class="w"> </span>--redact<span class="w"> </span>--<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;PASSWORD: </span><span class="si">${</span><span class="nv">API_PASSWORD</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="c1"># Output</span>
+-*-<span class="w"> </span>teller:<span class="w"> </span>loaded<span class="w"> </span>variables<span class="w"> </span><span class="k">for</span><span class="w"> </span>2nd<span class="w"> </span>Brain<span class="w"> </span>using<span class="w"> </span>.teller.yml<span class="w"> </span>-*-
+PASSWORD:<span class="w"> </span>**REDACTED!**
+</code></pre></div>
+
+<h3 id="use-secrets-in-your-zsh-shell-functions">Use secrets in your ZSH shell functions<a class="headerlink" href="#use-secrets-in-your-zsh-shell-functions" title="Permanent link">&para;</a></h3>
+<p>I use <code>ansible-navigator</code> to run playbooks against our Red Hat hosts. It requires some specific environment variables to be set, so I load them on-demand with a ZSH function.</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># ~/.zshrc</span>
+a<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>teller<span class="w"> </span>sh<span class="k">)</span><span class="s2">&quot;</span>
+<span class="w">    </span>ansible-navigator<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># Usage</span>
+a<span class="w"> </span>run<span class="w"> </span>/path/to/playbook.yml
+</code></pre></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../MkDocs/" class="btn btn-neutral float-left" title="MkDocs Site Generator"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/umd-lib/dbowling/kb" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../MkDocs/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
