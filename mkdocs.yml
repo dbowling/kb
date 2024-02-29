@@ -1,4 +1,4 @@
-site_name: K8s Documentation
+site_name: Dan's Second Brain
 
 site_url: https://dbowling.github.io/kb
 repo_url: https://github.com/umd-lib/dbowling/kb
@@ -16,3 +16,4 @@ markdown_extensions:
       permalink: true
   - admonition: {}
   - codehilite
+  - meta

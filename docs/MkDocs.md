@@ -2,6 +2,8 @@
 
 [MkDocs](https://www.mkdocs.org/) is a fast, simple and downright gorgeous static site generator that's geared towards building project documentation.
 
+Importantly, it adds search!
+
 ## Installation
 
 ```shell
@@ -34,5 +36,5 @@ mkdocs gh-deploy
 
 You can also build it to a directory and deploy it to a web server, or deploy it to GitHub Pages.
 
-> [!NOTE]
-> GitHub Pages only work on paid accounts or public repositories.
+!!! note
+    GitHub Pages only work on paid accounts or public repositories.

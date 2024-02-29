@@ -67,11 +67,11 @@ $ teller show
 [dotenv ~/.env.demo] KUBE_CONTEXT = de*****
 ```
 
-> [!IMPORTANT]
-> Did you notice that Teller only imported the secrets we defined in `.teller.yml`?
->
-> This is a great security feature, letting you explicitly define which secrets are
-> allowed to be used in your project.
+!!! summary
+    Did you notice that Teller only imported the secrets we defined in `.teller.yml`?
+
+    This is a great security feature, letting you explicitly define which secrets are
+    allowed to be used in your project.
 
 ### Redact secrets from logs
 
@@ -90,8 +90,8 @@ EMAIL=name@example.com
 
 Teller redacted the secrets that we defined in `.teller.yml`!
 
-> [!TIP]
-> Even though we defined `EMAIL=name@example.com` in our `.env.demo` file, Teller did not redact it because we did not define it in `.teller.yml`. Use the `env_sync` feature to automatically import all secrets from your `.env` file.
+!!! summary
+    Even though we defined `EMAIL=name@example.com` in our `.env.demo` file, Teller did not redact it because we did not define it in `.teller.yml`. Use the `env_sync` feature to automatically import all secrets from your `.env` file.
 
 ### Load secrets into your shell commands
 
