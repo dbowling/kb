@@ -1,0 +1,18 @@
+site_name: K8s Documentation
+
+site_url: https://dbowling.github.io/kb
+repo_url: https://github.com/umd-lib/dbowling/kb
+edit_uri: edit/main/docs/
+docs_dir: docs
+theme: readthedocs
+
+plugins:
+  - search:
+      indexing: 'full'
+
+markdown_extensions:
+  - smarty
+  - toc:
+      permalink: true
+  - admonition: {}
+  - codehilite

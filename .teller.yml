@@ -1,0 +1,21 @@
+---
+project: 2nd Brain
+
+# carry owner process environment into child's env:
+carry_env: true
+
+# opts:
+#   stage: development
+# confirm: Are you sure you want to run for {{stage}}?
+
+providers:
+  dotenv:
+    env:
+      API_PASSWORD:
+        path: ~/.env.demo
+        field: PASSWORD
+        serverity: high
+        redact_with: "**REDACTED!**"
+      KUBE_CONTEXT:
+        path: ~/.env.demo
+        severity: none
