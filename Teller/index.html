@@ -152,8 +152,8 @@ cat<span class="w"> </span>~/.env.demo
 <span class="o">[</span>dotenv<span class="w"> </span>~/.env.demo<span class="o">]</span><span class="w"> </span><span class="nv">KUBE_CONTEXT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>de*****
 </code></pre></div>
 
-<div class="admonition success">
-<p class="admonition-title">Success</p>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
 <p>Did you notice that Teller only imported the secrets we defined in <code>.teller.yml</code>?</p>
 <p>This is a great security feature, letting you explicitly define which secrets are
 allowed to be used in your project.</p>
@@ -171,8 +171,8 @@ Simulated<span class="w"> </span>log...<span class="w"> </span>**REDACTED!**
 </code></pre></div>
 
 <p>Teller redacted the secrets that we defined in <code>.teller.yml</code>!</p>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
+<div class="admonition summary">
+<p class="admonition-title">Summary</p>
 <p>Even though we defined <code>EMAIL=name@example.com</code> in our <code>.env.demo</code> file, Teller did not redact it because we did not define it in <code>.teller.yml</code>. Use the <code>env_sync</code> feature to automatically import all secrets from your <code>.env</code> file.</p>
 </div>
 <h3 id="load-secrets-into-your-shell-commands">Load secrets into your shell commands<a class="headerlink" href="#load-secrets-into-your-shell-commands" title="Permanent link">&para;</a></h3>
