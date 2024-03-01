@@ -1,7 +1,7 @@
 site_name: Dan's Second Brain
 
 site_url: https://dbowling.github.io/kb
-repo_url: https://github.com/umd-lib/dbowling/kb
+repo_url: https://github.com/dbowling/kb
 edit_uri: edit/main/docs/
 docs_dir: docs
 theme: readthedocs
